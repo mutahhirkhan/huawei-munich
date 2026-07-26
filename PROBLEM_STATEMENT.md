@@ -25,7 +25,7 @@ Total:
 
 # Resources
 
-- [**Example Code, Sample Data & Proposal Template**](https://drive.google.com/drive/folders/19WmltlHFZUsf68STaIPT4_24F6EfpQJO?usp=drive_link) 
+- [**Example Code, Sample Data & Proposal Template**](https://drive.google.com/drive/folders/19WmltlHFZUsf68STaIPT4_24F6EfpQJO?usp=drive_link)
 
 ---
 
@@ -54,7 +54,7 @@ Landmark Estimation Model
 
 ![Figure 1 - Landmark Estimation Pipeline](https://cdn.fs.agorize.com/px5CEPUESguwaXRz1YkK)
 
-*Figure 1. Block diagram of the pinna landmark estimation process.*
+_Figure 1. Block diagram of the pinna landmark estimation process._
 
 ---
 
@@ -113,7 +113,7 @@ This standardized alignment ensures consistent landmark annotation across all su
 
 ![Figure 2 - Anatomical Coordinate System](https://cdn.fs.agorize.com/CSUZOH68Rsij5a1TMtDn)
 
-*Figure 2. Anatomical coordinate system used to align all 3D meshes.*
+_Figure 2. Anatomical coordinate system used to align all 3D meshes._
 
 ---
 
@@ -121,13 +121,13 @@ This standardized alignment ensures consistent landmark annotation across all su
 
 Each ear is represented using four anatomical contours.
 
-| Structure | Number of Points |
-|-----------|-----------------:|
-| Outer Helix | 25 |
-| Concha Outline | 30 |
-| Inner Helix | 20 |
-| Superior Antihelix | 10 |
-| **Total** | **85** |
+| Structure          | Number of Points |
+| ------------------ | ---------------: |
+| Outer Helix        |               25 |
+| Concha Outline     |               30 |
+| Inner Helix        |               20 |
+| Superior Antihelix |               10 |
+| **Total**          |           **85** |
 
 ---
 
@@ -135,8 +135,7 @@ Each ear is represented using four anatomical contours.
 
 ![Figure 3 - Pinna Contours](https://cdn.fs.agorize.com/1izn3bA2RhuuBgAv6HGM)
 
-*Figure 3. The four annotated pinna contours: Outer Helix (25), Concha Outline (30), Inner Helix (20), and Superior Antihelix (10), totaling 85 landmarks.*
-
+_Figure 3. The four annotated pinna contours: Outer Helix (25), Concha Outline (30), Inner Helix (20), and Superior Antihelix (10), totaling 85 landmarks._
 
 ---
 
@@ -179,33 +178,19 @@ Performance is evaluated using the **Mean Euclidean Distance (MD)** between pred
 
 ## Ground Truth
 
-For subject **j** and one ear,
+For subject $j$ and one ear:
 
-$$
-L_{gt}^{j,\mathrm{ear}}
-=
-\left\{
-l_{gt,1}^{j,\mathrm{ear}},
-l_{gt,2}^{j,\mathrm{ear}},
-\ldots,
-l_{gt,N}^{j,\mathrm{ear}}
-\right\}
-$$
+```math
+L_{gt}^{j,\mathrm{ear}} = \left\{ l_{gt,1}^{j,\mathrm{ear}}, l_{gt,2}^{j,\mathrm{ear}}, \ldots, l_{gt,N}^{j,\mathrm{ear}} \right\}
+```
 
 ---
 
 ## Prediction
 
-$$
-L_{out}^{j,\mathrm{ear}}
-=
-\left\{
-l_{out,1}^{j,\mathrm{ear}},
-l_{out,2}^{j,\mathrm{ear}},
-\ldots,
-l_{out,N}^{j,\mathrm{ear}}
-\right\}
-$$
+```math
+L_{out}^{j,\mathrm{ear}} = \left\{ l_{out,1}^{j,\mathrm{ear}}, l_{out,2}^{j,\mathrm{ear}}, \ldots, l_{out,N}^{j,\mathrm{ear}} \right\}
+```
 
 where:
 
@@ -217,20 +202,9 @@ Each landmark contains its 3D coordinates.
 
 ## Distance for One Ear
 
-$$
-d\!\left(
-L_{out}^{j,\mathrm{ear}},
-L_{gt}^{j,\mathrm{ear}}
-\right)
-=
-\frac{1}{N}
-\sum_{i=1}^{N}
-\left\|
-l_{out,i}^{j,\mathrm{ear}}
--
-l_{gt,i}^{j,\mathrm{ear}}
-\right\|
-$$
+```math
+d\left( L_{out}^{j,\mathrm{ear}}, L_{gt}^{j,\mathrm{ear}} \right) = \frac{1}{N} \sum_{i=1}^{N} \left\| l_{out,i}^{j,\mathrm{ear}} - l_{gt,i}^{j,\mathrm{ear}} \right\|
+```
 
 This computes the average Euclidean distance between corresponding predicted and ground-truth landmarks.
 
@@ -240,19 +214,11 @@ A **lower distance** indicates better performance.
 
 ## Final Metric
 
-Across all **M** subjects and both ears,
+Across all $M$ subjects and both ears,
 
-$$
-MD
-=
-\frac{1}{2M}
-\sum_{j=1}^{M}
-\sum_{\mathrm{ear}}
-d\!\left(
-L_{out}^{j,\mathrm{ear}},
-L_{gt}^{j,\mathrm{ear}}
-\right)
-$$
+```math
+MD = \frac{1}{2M} \sum_{j=1}^{M} \sum_{\mathrm{ear}} d\left( L_{out}^{j,\mathrm{ear}}, L_{gt}^{j,\mathrm{ear}} \right)
+```
 
 where:
 
@@ -298,16 +264,15 @@ Access requires:
 
 Only after successful verification is access granted.
 
-
 ---
 
 # References
 
-1. Outer Ear Anatomy  
+1. Outer Ear Anatomy
    https://en.wikipedia.org/wiki/Outer_ear
 
-2. Engel, Isaac, et al. (2023).  
-   *The SONICOM HRTF Dataset.* Journal AES.
+2. Engel, Isaac, et al. (2023).
+   _The SONICOM HRTF Dataset._ Journal AES.
 
-3. Kahana Yuvi & Philip Nelson (2007).  
-   *Boundary element simulations of the transfer function of human heads and baffled pinnae using accurate geometric models.* Journal of Sound and Vibration.
+3. Kahana Yuvi & Philip Nelson (2007).
+   _Boundary element simulations of the transfer function of human heads and baffled pinnae using accurate geometric models._ Journal of Sound and Vibration.
